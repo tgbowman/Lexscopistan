@@ -1,3 +1,4 @@
+//Generator Function to create Containers
 const gemContainerGenerator = function*() {
 let currentGemContainter= 1
 const maxContainers = 30
@@ -32,20 +33,20 @@ Instead of being located in an outer scope to the
 function, the gem mine is enclosed by the scope of
 the `gemHeapSkope` function.
 */
-const GemMine = {
-"Onyx": {
-"kilograms": 453
-},
-"Amethyst": {
-"kilograms": 453
-},
-"Bloodstone": {
-"kilograms": 453
-},
-"Emerald": {
-"kilograms": 453
-}
-}
+    const GemMine = {
+    "Onyx": {
+    "kilograms": 453
+    },
+    "Amethyst": {
+    "kilograms": 453
+    },
+    "Bloodstone": {
+    "kilograms": 453
+    },
+    "Emerald": {
+    "kilograms": 453
+    }
+    }
 
 /*
 Instead of processing the entirety of the resources in
@@ -98,39 +99,38 @@ const SkopeManager = gemHeapSkope()
 let i = 0
 function gemSorter() {
     let counter = 0
-    let gems = ["Onyx", "Amethyst", "Bloodstone", "Emerald"]
+    let gems = ["Onyx", "Amethyst", "Bloodstone", "Emerald"] 
     let GemContainer = gemContainerFactory.next().value
     let gemsToPackage = []
 
-    while(counter < (565/5) && i < 4) {
+    while(counter < (565/5) && i < 4) {             //While loop that runs the function to create mineral objects enough                                                      times to fill a container
         let gemReturn = SkopeManager.process(gems[i])
-        switch(gemReturn.amount) {
+        switch(gemReturn.amount) {  //Switch statement that checks to see if there are more of the current Gem type left.
             case 5:
                 gemsToPackage.push(gemReturn)
                 break
             case 3:
                 gemsToPackage.push(gemReturn)
-                i++
+                i++                             //if there aren't enough gems to create another packet of 5 the gem                                         indicator increases by 1.
                 break
         }
         counter ++
     }
-        GemContainer.kilograms = gemsToPackage
-        return GemContainer
+        GemContainer.kilograms = gemsToPackage  // adds the sorted gems into the container
+        return GemContainer                 // returns the container
 
     }
-let gemCounter = function() {
+let gemCounter = function() {       //function that runs the gemSorter function 4 times to sort all the gems into containers
     let GEMS = []
     for (x=0; x <= 3; x++){
         let gemSort = gemSorter()
         GEMS.push(gemSort)
     }
-   
+    console.log(GEMS)
     return GEMS
-
 }
 
-console.log(gemCounter())
+gemCounter()
 
 
 
