@@ -33,7 +33,7 @@ const metalHeapSkope = function() {
                     let rawMetal 
                     let processedMetals 
                     let currentMine
-                    
+
                     if(mountain.mine1.hasOwnProperty(requestedMetal) === true){
                         currentMine = mountain.mine1
                         rawMetal= mountain.mine1[requestedMetal]
@@ -75,7 +75,7 @@ let METAL = function() {
             if(i===metals.length){totalContainers.push(currentContainer)}
             if(currentContainer.capacity <= metals.length) {
                 totalContainers.push(currentContainer)
-                currentContainer = gemContainerFactory.next().value
+                currentContainer = metalContainerFactory.next().value
             }
         } while (i < metals.length)
         console.log(totalContainers)
